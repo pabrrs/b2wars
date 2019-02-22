@@ -38,7 +38,10 @@ INSTALLED_APPS = [
 
     # Djongo MongoDB support
     # https://github.com/nesdis/djongo
-    'djongo'
+    'djongo',
+
+    'b2wars.apps.core',
+    'b2wars.apps.planets'
 ]
 
 MIDDLEWARE = [
