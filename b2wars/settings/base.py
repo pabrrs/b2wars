@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # https://github.com/nesdis/djongo
     'djongo',
 
+    # b2wars Apps
     'b2wars.apps.core',
     'b2wars.apps.planets'
 ]
