@@ -22,3 +22,6 @@ coverage.xml
 ### IDE Files ###
 .DS_Store
 .vscode
+
+### Docker ###
+var/

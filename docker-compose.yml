@@ -1,0 +1,36 @@
+version: "3.1"
+
+services:
+
+  db:
+    image: mongo
+    hostname: b2warsdb
+    command: [ "mongod" , "--auth" ]
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=b2wars
+      - MONGO_INITDB_ROOT_PASSWORD=b2wars
+      - MONGO_INITDB_DATABASE=b2wars
+    ports:
+      - "27017:27017"
+
+  api:
+    build: .
+    entrypoint: /docker-entrypoint.sh
+    environment: 
+      - B2WARS_DB_HOST=b2warsdb
+      - B2WARS_DB_NAME=b2wars
+      - B2WARS_DB_USER=b2wars
+      - B2WARS_DB_PASSWORD=b2wars
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    links:
+      - db:b2warsdb
+    depends_on:
+      - db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 2m
+      timeout: 10s
+      retries: 3

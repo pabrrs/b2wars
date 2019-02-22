@@ -34,7 +34,11 @@ INSTALLED_APPS = [
 
     # Django rest framework
     # https://www.django-rest-framework.org/
-    'rest_framework'
+    'rest_framework',
+
+    # Djongo MongoDB support
+    # https://github.com/nesdis/djongo
+    'djongo'
 ]
 
 MIDDLEWARE = [
