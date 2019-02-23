@@ -18,6 +18,10 @@ ignore=.coveragerc,
 disable=C0111,
         R0903
 
+[TYPECHECK]
+# objects: For models
+generated-members=objects
+
 [BASIC]
 # Constants name override
 # motivation: urlpatterns
