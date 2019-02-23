@@ -8,7 +8,7 @@ class MixinsTestCase(TestCase):
     def setUp(self):
         self.tsm_instance = TimeStampedMock.objects.create()
 
-    def test_model_has_craeted_at_updated_at_fields(self):
+    def test_model_has_created_and_updated_fields(self):
         """
         Check if fields `created_at` and `updated_at` was implemented in subclass
         """
@@ -27,7 +27,7 @@ class MixinsTestCase(TestCase):
         self.assertLess(self.tsm_instance.created_at, datetime.now())
 
 
-    def test_updated_value_on_edit(self):
+    def test_updated_at_value_on_edit(self):
         """
         Check current datetime on `updated_at` when edit instance
         """
