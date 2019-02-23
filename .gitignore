@@ -1,27 +1,14 @@
 ### Django ###
-*.log
-*.pot
 *.pyc
 __pycache__/
 local.py
 
-### Env Settings ###
-.env
-
-### Local database settings ###
-db.sqlite3
-
 #### Unit test & coverage reports ###
 htmlcov/
-.tox/
 .coverage
-.cache
-nosetests.xml
-coverage.xml
 
 ### IDE Files ###
-.DS_Store
 .vscode
 
-### Docker ###
+### Docker volumes ###
 var/
