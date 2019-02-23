@@ -45,3 +45,12 @@ class PlanetTestCase(TestCase):
             planet,
             Planet.objects.all()
         )
+
+    def test_planet_str_representation(self):
+        planet = Planet(
+            name="Stewjon",
+            climate="temperate",
+            terrain="grass"
+        )
+
+        self.assertEqual(str(planet), planet.name)
