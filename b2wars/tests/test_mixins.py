@@ -36,7 +36,7 @@ class MixinsTestCase(TestCase):
         self.tsm_instance.save()
 
         self.assertGreater(
-            self.tsm_instance.updated_at, 
+            self.tsm_instance.updated_at,
             self.tsm_instance.created_at
         )
 
