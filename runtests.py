@@ -21,9 +21,11 @@ if __name__ == '__main__':
     cov.stop()
     cov.save()
 
-    # Show report on terminal
-    cov.report()
-    # Save html report on htmlcov folder
-    cov.html_report(directory='htmlcov')
+    # Show report only when have not failures
+    if not bool(failures):
+        # Show report on terminal
+        cov.report()
+        # Save html report on htmlcov folder
+        cov.html_report(directory='htmlcov')
 
     sys.exit(failures)
