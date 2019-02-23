@@ -6,7 +6,7 @@ from b2wars.tests.models import TimeStampedMock
 class MixinsTestCase(TestCase):
 
     def setUp(self):
-        self.tsm_instance = TimeStampedMock.objects.create() 
+        self.tsm_instance = TimeStampedMock.objects.create()
 
     def test_model_has_craeted_at_updated_at_fields(self):
         """
