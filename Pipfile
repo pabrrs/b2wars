@@ -12,6 +12,8 @@ djongo = "*"
 [dev-packages]
 pylint = "*"
 "autopep8" = "*"
+django-nose = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.6"
