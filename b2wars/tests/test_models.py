@@ -6,13 +6,15 @@ class PlanetTestCase(TestCase):
 
     def test_create_planet(self):
         """ Tries to create a planet """
-        planet = Planet.objects.create(
+        planet = Planet(
             name="Alderaan",
             climate="temperate",
             terrain="grasslands, mountains"
         )
 
-        self.assertEqual(Planet.objects.last().id, planet.id)
+        planet.save()
+
+        self.assertEqual(Planet.objects.last().pk, planet.pk)
 
 
     def test_update_planet(self):
