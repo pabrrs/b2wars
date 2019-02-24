@@ -1,7 +1,9 @@
 # Import Django RestFramework settings
 
 # pylint: disable=unused-import
-from b2wars.settings.base import REST_FRAMEWORK
+from b2wars.settings.base import (
+    REST_FRAMEWORK, SWAPI_URL, SWAPI_PLANETS_URL
+)
 
 DEBUG = True
 

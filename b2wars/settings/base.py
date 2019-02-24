@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'djongo',
 
     # b2wars Apps
+    'b2wars.apps.swapi',
     'b2wars.apps.core',
     'b2wars.apps.planets'
 ]
@@ -132,3 +133,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 20
 }
+
+
+# SWAPI resources
+# https://swapi.co/
+
+SWAPI_URL = 'https://swapi.co/api'
+SWAPI_PLANETS_URL = "%s/planets/" % SWAPI_URL
