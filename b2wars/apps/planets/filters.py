@@ -22,4 +22,4 @@ class PlanetFilter(filters.FilterSet):
 
     class Meta:
         model = Planet
-        exclude = ['id']
+        exclude = ['id', 'created_at', 'updated_at']

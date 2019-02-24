@@ -10,6 +10,7 @@ class PlanetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Planet
         fields = (
+            'pk',
             'url',
             'name',
             'climate',
