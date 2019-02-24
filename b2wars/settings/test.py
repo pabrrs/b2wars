@@ -1,3 +1,7 @@
+# Import Django RestFramework settings
+
+# pylint: disable=unused-import
+from b2wars.settings.base import REST_FRAMEWORK
 
 DEBUG = True
 
