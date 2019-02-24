@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.db import IntegrityError
 
 from b2wars.apps.planets.models import Planet
 
@@ -47,6 +48,7 @@ class PlanetTestCase(TestCase):
         )
 
     def test_planet_str_representation(self):
+        """ Check __str__ method is present """
         planet = Planet(
             name="Stewjon",
             climate="temperate",
@@ -54,3 +56,20 @@ class PlanetTestCase(TestCase):
         )
 
         self.assertEqual(str(planet), planet.name)
+
+    def test_prevent_create_duplicated_planet(self):
+        """ Prevent to create two planets with same name """
+
+        with self.assertRaises(IntegrityError):
+            planet_a = Planet(
+                name="a",
+                climate="x",
+                terrain="y",
+            )
+            planet_a.save()
+
+            Planet.objects.create(
+                name=planet_a.name,
+                climate="z",
+                terrain="v"
+            )

@@ -16,9 +16,7 @@ class TimeStampedMixinTestCase(TestCase):
 
 
     def test_model_has_created_and_updated_fields(self):
-        """
-        Check if fields `created_at` and `updated_at` was implemented in subclass
-        """
+        """ Check if fields `created_at` and `updated_at` was implemented in subclass """
         self.assertTrue(hasattr(TimeStampedMock, 'created_at'))
         self.assertTrue(hasattr(TimeStampedMock, 'updated_at'))
 
@@ -27,17 +25,13 @@ class TimeStampedMixinTestCase(TestCase):
 
 
     def test_created_at_value_on_add(self):
-        """
-        Check current datetime on `created_at` when edit instance
-        """
+        """ Check current datetime on `created_at` when edit instance """
         self.assertIsNotNone(self.tsm_instance.created_at)
         self.assertLess(self.tsm_instance.created_at, datetime.now())
 
 
     def test_updated_at_value_on_edit(self):
-        """
-        Check current datetime on `updated_at` when edit instance
-        """
+        """ Check current datetime on `updated_at` when edit instance """
         self.assertIsNotNone(self.tsm_instance.updated_at)
 
         self.tsm_instance.save()
