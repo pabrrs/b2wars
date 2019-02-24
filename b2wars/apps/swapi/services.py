@@ -19,7 +19,7 @@ class SwapiService:
         if response.ok:
             return next(iter(json.loads(response.text)['results']), None)
 
-        raise SwapiServiceError("SWAPI communitation error")
+        raise SwapiServiceError("SWAPI communication error")
 
     @classmethod
     def get_films_from_planet(cls, planet_name):

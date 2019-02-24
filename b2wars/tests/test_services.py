@@ -13,26 +13,11 @@ class SwapiServiceTestCase(TestCase):
     }
 
     films = [
-        {
-            "name": "Attack of the Clones",
-            "url": "https://swapi.co/api/films/5/"
-        },
-        {
-            "name": "The Phantom Menace",
-            "url": "https://swapi.co/api/films/4/"
-        },
-        {
-            "name": "Revenge of the Sith",
-            "url": "https://swapi.co/api/films/6/"
-        },
-        {
-            "name": "Return of the Jedi",
-            "url": "https://swapi.co/api/films/3/"
-        },
-        {
-            "name": "A New Hope",
-            "url": "https://swapi.co/api/films/1/"
-        }
+        "https://swapi.co/api/films/5/",
+        "https://swapi.co/api/films/4/",
+        "https://swapi.co/api/films/6/",
+        "https://swapi.co/api/films/3/",
+        "https://swapi.co/api/films/1/"
     ]
 
     def setUp(self):
@@ -53,11 +38,17 @@ class SwapiServiceTestCase(TestCase):
     def test_get_films_from_planet(self):
         """ Check if films from planet are been returned """
 
-        films = self.swapi.get_films_from_planet(
+        films_from_planet = self.swapi.get_films_from_planet(
             self.planet['name']
         )
 
-        self.assertGreaterEqual(len(films), len(self.films))
+        self.assertGreaterEqual(len(films_from_planet), len(self.films))
+        self.assertTrue(set(films_from_planet) >= set(self.films))
+        self.assertTrue(
+            any(
+                self.films[0] == film_url for film_url in films_from_planet
+            )
+        )
 
     def tearDown(self):
         self.swapi = None
