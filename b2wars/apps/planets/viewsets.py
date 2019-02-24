@@ -11,4 +11,3 @@ class PlanetViewSet(viewsets.ModelViewSet):
     queryset = Planet.objects.all()
     serializer_class = PlanetSerializer
     filter_class = PlanetFilter
-

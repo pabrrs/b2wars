@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'djongo',
 
     # b2wars Apps
-    'b2wars.apps.swapi',
     'b2wars.apps.core',
     'b2wars.apps.planets'
 ]

@@ -27,8 +27,6 @@ class TimeStampedMixinTestCase(TestCase):
     def test_created_at_value_on_add(self):
         """ Check current datetime on `created_at` when edit instance """
         self.assertIsNotNone(self.tsm_instance.created_at)
-        self.assertLess(self.tsm_instance.created_at, datetime.now())
-
 
     def test_updated_at_value_on_edit(self):
         """ Check current datetime on `updated_at` when edit instance """

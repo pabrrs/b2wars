@@ -2,7 +2,20 @@ from rest_framework import serializers
 
 from b2wars.apps.planets.models import Planet
 
+
 class PlanetSerializer(serializers.HyperlinkedModelSerializer):
+    films = serializers.ReadOnlyField()
+    films_appearances = serializers.ReadOnlyField()
+
     class Meta:
         model = Planet
-        fields = ('url', 'name', 'climate', 'terrain', 'created_at', 'updated_at')
+        fields = (
+            'url',
+            'name',
+            'climate',
+            'terrain',
+            'films',
+            'films_appearances',
+            'created_at',
+            'updated_at'
+        )

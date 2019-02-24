@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from rest_framework import routers
-from b2wars.apps.planets.views import PlanetViewSet
+from b2wars.apps.planets.viewsets import PlanetViewSet
 
 router = routers.DefaultRouter()
 router.register(r'planets', PlanetViewSet)
