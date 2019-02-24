@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+import coverage
+
+from runtests import run_tests
+
+def run_cov():
+
+    # Set coverage to b2wars app
+    cov = coverage.Coverage(source=['b2wars/apps', 'b2wars/tests'])
+    cov.start()
+
+    # Run tests
+    failures = run_tests(verbosity=0, interactive=False, failfast=False)
+
+    cov.stop()
+    cov.save()
+
+    # Show report only when have not failures
+    if not bool(failures):
+        # Show report on terminal
+        cov.report()
+        # Save html report on htmlcov folder
+        cov.html_report(directory='htmlcov')
+
+if __name__ == '__main__':
+    run_cov()
