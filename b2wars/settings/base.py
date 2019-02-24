@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     # https://www.django-rest-framework.org/
     'rest_framework',
 
+    # Django Filter
+    # https://django-filter.readthedocs.io/en/master/
+    'django_filters',
+
     # Djongo MongoDB support
     # https://github.com/nesdis/djongo
     'djongo',
@@ -115,9 +119,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# Django Rest Framwork
+# Django Rest Framwork Settings
 
 REST_FRAMEWORK = {
+    # Filtering settings
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+
+    # Pagination settings
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 20
 }
