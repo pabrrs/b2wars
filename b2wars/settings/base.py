@@ -115,7 +115,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-
 # Django Rest Framwork
 
 REST_FRAMEWORK = {

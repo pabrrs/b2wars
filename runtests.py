@@ -14,7 +14,7 @@ if __name__ == '__main__':
     runner = test_runner_class(verbosity=2, interactive=True, failfast=False)
 
     # Set coverage to b2wars app
-    cov = coverage.Coverage(source=['b2wars'])
+    cov = coverage.Coverage(source=['b2wars/apps', 'b2wars/tests'])
     cov.start()
     # Run tests
     failures = runner.run_tests([])
