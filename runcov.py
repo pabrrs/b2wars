@@ -10,7 +10,7 @@ def run_cov():
     cov.start()
 
     # Run tests
-    failures = run_tests(verbosity=0, interactive=False, failfast=False)
+    failures = run_tests(verbosity=0, interactive=False, failfast=True)
 
     cov.stop()
     cov.save()
