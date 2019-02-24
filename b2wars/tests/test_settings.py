@@ -12,9 +12,8 @@ class SettingsTestCase(TestCase):
             'rest_framework.pagination.LimitOffsetPagination'
         )
 
+
     def test_paginate_20_per_page(self):
         """  Check if paginator allows only 20 items per page """
-        self.assertEqual(
-            settings.REST_FRAMEWORK['PAGE_SIZE'],
-            20
-        )
+
+        self.assertEqual(settings.REST_FRAMEWORK['PAGE_SIZE'], 20)

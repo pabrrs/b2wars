@@ -10,8 +10,10 @@ class PlanetsResourceTestCase(APITestCase):
     path = '/planets/'
     factory = APIRequestFactory()
 
+
     def object_url(self, object_id):
         return "%s%i" % (self.path, object_id)
+
 
     @classmethod
     def setUpClass(cls):
@@ -192,6 +194,7 @@ class PlanetsResourceTestCase(APITestCase):
 
     def test_planet_have_films_field(self):
         """ Check if films list is present in planet object """
+
         planet = Planet.objects.get(name="Tatooine")
         request = self.factory.get(self.object_url(planet.pk))
         planet_retrieve = PlanetViewSet.as_view({'get': 'retrieve'})
@@ -200,8 +203,9 @@ class PlanetsResourceTestCase(APITestCase):
         self.assertIsInstance(response.data['films'], list)
 
 
-    def test_planet_film_appearances_calc(self):
-        """ Check field film_appearances is properly calculated """
+    def test_planet_films_appearances_calc(self):
+        """ Check field films_appearances is properly calculated """
+
         planet = Planet.objects.get(name="Jakku")
         planet_films = [
             "https://swapi.co/api/films/7/"
@@ -209,9 +213,9 @@ class PlanetsResourceTestCase(APITestCase):
         request = self.factory.get(self.object_url(planet.pk))
         planet_retrieve = PlanetViewSet.as_view({'get': 'retrieve'})
         response = planet_retrieve(request, pk=planet.pk)
-        self.assertTrue('film_appearances' in response.data.keys())
-        self.assertIsInstance(response.data['film_appearances'], int)
-        self.assertEqual(len(response.data['film_appearances']), len(planet_films))
+        self.assertTrue('films_appearances' in response.data.keys())
+        self.assertIsInstance(response.data['films_appearances'], int)
+        self.assertEqual(response.data['films_appearances'], len(planet_films))
 
 
 

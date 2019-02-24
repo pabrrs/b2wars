@@ -15,5 +15,5 @@ def run_tests(**kwargs):
 
 if __name__ == '__main__':
     sys.exit(run_tests(
-        verbosity=2, interactive=True, failfast=False
+        verbosity=2, interactive=True, failfast=True
     ))

@@ -5,13 +5,11 @@ from b2wars.apps.swapi.services import SwapiService
 
 class SwapiServiceTestCase(TestCase):
     swapi = None
-
     planet = {
         "name": "Tatooine",
         "climate": "arid",
         "terrain": "desert"
     }
-
     films = [
         "https://swapi.co/api/films/5/",
         "https://swapi.co/api/films/4/",
@@ -19,6 +17,7 @@ class SwapiServiceTestCase(TestCase):
         "https://swapi.co/api/films/3/",
         "https://swapi.co/api/films/1/"
     ]
+
 
     def setUp(self):
         self.swapi = SwapiService()
@@ -41,14 +40,12 @@ class SwapiServiceTestCase(TestCase):
         films_from_planet = self.swapi.get_films_from_planet(
             self.planet['name']
         )
-
         self.assertGreaterEqual(len(films_from_planet), len(self.films))
         self.assertTrue(set(films_from_planet) >= set(self.films))
         self.assertTrue(
-            any(
-                self.films[0] == film_url for film_url in films_from_planet
-            )
+            any(self.films[0] == film_url for film_url in films_from_planet)
         )
+
 
     def tearDown(self):
         self.swapi = None
