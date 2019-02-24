@@ -1,3 +1,3 @@
 
 class SwapiServiceError(Exception):
-    """ SwapiServiceError for handle SWAPI comunitation errors """
+    """ SwapiServiceError for handle SWAPI communication errors """
