@@ -7,7 +7,7 @@ from b2wars.apps.planets.viewsets import PlanetViewSet
 
 
 class PlanetsResourceTestCase(APITestCase):
-    path = '/planets/'
+    path = '/api/planets/'
     factory = APIRequestFactory()
 
 
@@ -36,7 +36,7 @@ class PlanetsResourceTestCase(APITestCase):
         ])
 
     def test_planet_resource_is_avaliable(self):
-        """ Check if Products resource is available """
+        """ Check if planets resource is available """
 
         response = self.client.get(self.path)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -174,7 +174,7 @@ class PlanetsResourceTestCase(APITestCase):
         planet_list = PlanetViewSet.as_view({'get': 'list'})
         response = planet_list(request)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(next(iter(response.data['results'])), serializer.data)
+        self.assertIn(serializer.data, response.data['results'])
 
 
     def test_search_planet_by_terrain(self):
@@ -189,7 +189,7 @@ class PlanetsResourceTestCase(APITestCase):
         planet_list = PlanetViewSet.as_view({'get': 'list'})
         response = planet_list(request)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(next(iter(response.data['results'])), serializer.data)
+        self.assertIn(serializer.data, response.data['results'])
 
 
     def test_planet_have_films_field(self):
