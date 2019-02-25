@@ -9,5 +9,5 @@ router.register(r'planets', PlanetViewSet)
 urlpatterns = [
 
     # Automatic URL mapping for registered resources
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
