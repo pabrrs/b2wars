@@ -12,7 +12,7 @@ DATABASES = {
         'NAME': os.environ.get('B2WARS_HEROKU_DB_NAME'),
         'HOST': os.environ.get('B2WARS_HEROKU_DB_HOST'),
         'USER': os.environ.get('B2WARS_HEROKU_DB_USER'),
-        'PORT': os.environ.get('B2WARS_HEROKU_DB_PORT'),
+        'PORT': int(os.environ.get('B2WARS_HEROKU_DB_PORT')),
         'PASSWORD': os.environ.get('B2WARS_HEROKU_DB_PASSWORD'),
     }
 }
