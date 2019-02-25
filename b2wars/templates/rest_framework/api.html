@@ -1,5 +1,12 @@
 {% extends "rest_framework/base.html" %}
 
+{% block userlinks %}
+    <li class="nav-item">
+        <a class='nav-link' target="_blank" href="https://github.com/abekroenem/b2wars">See on Github</a>
+    </li>
+{% endblock userlinks %}
+
+
 {% block branding %}
 <a class='navbar-brand' href="/api/">
     <svg width="16" height="14" xmlns="http://www.w3.org/2000/svg">
