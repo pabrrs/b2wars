@@ -10,7 +10,9 @@ ignore=.coveragerc,
        Pipfile.lock,
        Procfile,
        README.md,
-       migrations
+       migrations,
+       LICENSE,
+       coverage.xml
 
 [MESSAGE CONTROL]
 # C0111: Missing docstring

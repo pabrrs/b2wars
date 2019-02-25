@@ -1,13 +1,10 @@
 # pylint: disable=missing-docstring
 # pylint: disable=unused-wildcard-import
 # pylint: disable=wildcard-import
-from b2wars.settings.base import *
+from b2wars.settings.dev import *
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
-
-# MongoDB Database
+# MongoDB container connection
+# see docker-compose.yml
 
 DATABASES = {
     'default': {

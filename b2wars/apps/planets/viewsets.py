@@ -4,6 +4,7 @@ from b2wars.apps.planets.models import Planet
 from b2wars.apps.planets.serializers import PlanetSerializer
 from b2wars.apps.planets.filters import PlanetFilter
 
+# pylint: disable=too-many-ancestors
 class PlanetViewSet(viewsets.ModelViewSet):
     """
     Planets API resource
