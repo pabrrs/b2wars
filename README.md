@@ -418,6 +418,8 @@ $ python runcov.py
 $ docker-compose exec api python runcov.py
 ```
 
+To access a **html** representation of coverage results, open the file [htmlcov/index.html](htmlcov/index.html) on your browser.
+
 
 # Run linter
 
