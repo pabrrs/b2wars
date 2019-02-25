@@ -1,18 +1,17 @@
 language: python
 python:
-    - "3.6"
+- "3.6"
 env:
-    - DJANGO=2.1.7
+- DJANGO=2.1.7
 install:
-    - pip install pipenv
-    - pipenv install --dev --system
+- pip install pipenv
+- pipenv install --dev --system
 script:
-    - python runtests.py
+- python runtests.py
 after_success:
-    - codecov
-
+- codecov
 deploy:
-    provider: heroku
-    api_key:
-        secure: $HEROKU_API_KEY
-        app: b2wars
+  provider: heroku
+  api_key:
+    secure: $HEROKU_API_KEY
+    app: b2wars
