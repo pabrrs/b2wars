@@ -214,7 +214,7 @@ To run **B2Wars** with Docker, make sure you have **Docker** and **Docker Compos
 Then, just run:
 
 ```shell
-$ docker-compose up
+$ docker-compose up --build
 ```
 Output
 ```shell

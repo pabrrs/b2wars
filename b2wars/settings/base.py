@@ -35,8 +35,6 @@ INSTALLED_APPS = [
     # https://www.django-rest-framework.org/
     'rest_framework',
 
-    'rest_framework_swagger',
-
     # Django Filter
     # https://django-filter.readthedocs.io/en/master/
     'django_filters',
@@ -131,7 +129,11 @@ REST_FRAMEWORK = {
 
     # Pagination settings
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 20
+    'PAGE_SIZE': 20,
+
+    # Remote auth (no required)
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
 }
 
 
