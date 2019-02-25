@@ -11,6 +11,7 @@ djongo = "*"
 requests = "*"
 django-rest-swagger = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 pylint = "*"
