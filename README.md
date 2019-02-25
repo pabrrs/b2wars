@@ -45,7 +45,7 @@ This project was created as a solution to the challenge for the backend develope
 
 # How to use
 
-**B2Wars API** can be used from Browsable API (html representation of API) and through `JSON` format. You can use **B2Wars** from heroku: [https://b2wars.herokuapp.com/api/](https://b2wars.herokuapp.com/api/) or locally through [http://localhost:8000].
+**B2Wars API** can be used from Browsable API (html representation of API) and through `JSON` format. You can use **B2Wars** from heroku: [https://b2wars.herokuapp.com/api/](https://b2wars.herokuapp.com/api/) or locally through [http://localhost:8000](http://localhost:8000).
 
 ## Examples
 
