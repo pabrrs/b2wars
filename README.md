@@ -206,7 +206,7 @@ HTTP/1.1 201 Created
     "updated_at": "2019-02-25T18:17:11.003279Z"
 }
 ```
-Error return (tries to add duplicated name) :x:
+Error return (tries to add duplicated `name`) :x:
 
 ```json
 HTTP/1.1 400 Bad request
@@ -268,6 +268,13 @@ Successful return :heavy_check_mark:
 HTTP/1.1 204 No Content
 
 
+```
+Error (invalid `:id` provided) :x:
+```json
+HTTP/1.1 404 Not Found
+{
+    "detail": "Not found."
+}
 ```
 
 ### Search in Planets
