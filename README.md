@@ -99,7 +99,7 @@ CRUD implementation of planets, available in `/api/planets/` resource.
 
 |Field|Type|Description|Rules|Default|
 |:---|:--:|:----------|:---:|:-----:|
-|`pk`|int|ID of a plant|unique, read only|-|
+|`pk`|int|ID of a planet|unique, read only|-|
 |`name`|str|Name of a planet|unique, required|-|
 |`climate`|str|Climate of a planet|optional|`"unknown"`|
 |`terrain`|str|Terrain of a planet|optional|`"unknown"`|
@@ -447,7 +447,9 @@ Your code has been rated at 10.00/10 (previous run: 9.97/10, +0.03)
 
 # Project Planning
 
-The Kanban Board from **B2Wars** is avaliable over [Projects](https://github.com/abekroenem/b2wars/projects) tabs. The first development cycle of **B2Wars** is available in [b2wars v1r0](https://github.com/abekroenem/b2wars/projects/1) version.
+The Kanban Board from **B2Wars** is available in [Projects](https://github.com/abekroenem/b2wars/projects) tab. 
+
+The first development cycle of **B2Wars** is available in [b2wars v1r0](https://github.com/abekroenem/b2wars/projects/1) version.
 
 
 
