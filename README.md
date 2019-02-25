@@ -45,27 +45,27 @@ This project was created as a solution to the challenge for the backend develope
 
 # How to use
 
-**B2Wars API** can be used from Browsable API (html representation of API) and through `JSON` format. You can use **B2Wars** from heroku: [https://b2wars.herokuapp.com/api/](https://b2wars.herokuapp.com/api/) or locally through [http://localhost:8000](http://localhost:8000).
+**B2Wars API** can be used from Browsable API (html representation of API) and through `JSON` format. You can use **B2Wars** from heroku: [https://b2wars.herokuapp.com/api/](https://b2wars.herokuapp.com/api/) or locally through [http://localhost:8000/api/](http://localhost:8000/api/).
 
 ## Examples
 
 ### Browsable API
 
-By going to `/api/products/`, you will see a list of paginated planet objects. 
+By going to [https://b2wars.herokuapp.com/api/](https://b2wars.herokuapp.com/api/), you will see a list of paginated planet objects. 
 
 ![Browsable API](docs/planet-list-browsable-api.png)
 
 
 ### JSON
 
-To access a `json` representation of this results, just put `/api/products?format=json` param at the end of url.
+To access a `json` representation of this results, just put [https://b2wars.herokuapp.com/api/planets/?format=json](https://b2wars.herokuapp.com/api/planets/?format=json) param at the end of url.
 
 ![Browsable API](docs/planet-list-json.jpeg)
 
 
 ### Terminal
 
-You can also make a request via any http client, with `Content-Type: application/json` . See this example with **cURL**:
+You can also make a request via any http client, with `Content-Type: application/json`. See this example with **cURL**:
 
 ```shell
 $ curl -X GET -H 'Content-Type: application/json;' http://localhost:8000/api/planets/1/
@@ -92,7 +92,7 @@ Return
 
 # Planets Resource
 
-CRUD implementation of planets, through `/api/planets/` resource.
+CRUD implementation of planets, available in `/api/planets/` resource.
 
 ### Planets entity
 
