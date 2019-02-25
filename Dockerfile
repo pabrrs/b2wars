@@ -21,3 +21,6 @@ RUN pipenv install --system --dev
 
 # Copy entrypoint
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+
+# Executable access to entrypoint script
+RUN chmod +x /docker-entrypoint.sh
