@@ -1,5 +1,3 @@
-# Import Django RestFramework settings
-
 # pylint: disable=unused-wildcard-import
 # pylint: disable=wildcard-import
 from b2wars.settings.base import *

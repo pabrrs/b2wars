@@ -1,0 +1,18 @@
+language: python
+    python:
+        - "3.6"
+    services:
+        - mongodb
+    env:
+        - DJANGO_SETTINGS_MODULE=b2wars.settings.ci
+        - DJANGO=2.2
+        - TRAVIS_DB_NAME=travis
+        - TRAVIS_DB_USER=travis
+        - TRAVIS_DB_PASSWORD=travis
+    install:
+        - python3 -m pip install pipenv
+        - pipenv install --system --dev
+    before_script:
+        - mongo travis --eval 'db.createUser({user:"travis",pwd:"travis",roles:["readWrite"]});'
+    script:
+        - python runtests.py
