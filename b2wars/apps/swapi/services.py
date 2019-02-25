@@ -11,13 +11,18 @@ class SwapiService:
     @classmethod
     def search_planet_by_name(cls, name):
         """
-        Search a planet by name in SWAPI and return the first match
+        Search a planet by name in SWAPI and return the first match.
+        In case of any planet to be reached, return an empty `dict`.
         """
 
         url = "%s?search=%s" % (settings.SWAPI_PLANETS_URL, name)
         response = requests.get(url)
         if response.ok:
-            return next(iter(json.loads(response.text)['results']), None)
+            return next(
+                filter(
+                    lambda r: r['name'].lower() == name.lower(),
+                    json.loads(response.text)['results']),
+                {})
 
         raise SwapiServiceError("SWAPI communication error")
 
