@@ -1,6 +1,7 @@
-from django.urls import path, include
-
+from django.urls import include, path
+from django.views.generic.base import RedirectView
 from rest_framework import routers
+
 from b2wars.apps.planets.viewsets import PlanetViewSet
 
 router = routers.DefaultRouter()
@@ -10,4 +11,5 @@ urlpatterns = [
 
     # Automatic URL mapping for registered resources
     path('api/', include(router.urls)),
+    path('', RedirectView.as_view(url='api/', permanent=False)),
 ]
