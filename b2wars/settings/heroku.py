@@ -9,11 +9,13 @@ from b2wars.settings.dev import *
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
         'NAME': os.environ.get('B2WARS_HEROKU_DB_NAME'),
         'HOST': os.environ.get('B2WARS_HEROKU_DB_HOST'),
         'USER': os.environ.get('B2WARS_HEROKU_DB_USER'),
         'PASSWORD': os.environ.get('B2WARS_HEROKU_DB_PASSWORD'),
         'PORT': 49875,
+        'AUTH_SOURCE': os.environ.get('B2WARS_HEROKU_DB_NAME'),
         'AUTH_MECHANISM': 'SCRAM-SHA-1', # Mechanism to authenticate in mLab Heroku Addon
     }
 }
