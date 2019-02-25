@@ -9,4 +9,4 @@ install:
 script:
     - python runtests.py
 after_success:
-    - coveralls
+    - codecov

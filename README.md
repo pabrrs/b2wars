@@ -68,7 +68,7 @@ To access a `json` representation of this results, just put [https://b2wars.hero
 You can also make a request via any http client, with `Content-Type: application/json`. See this example with **cURL**:
 
 ```shell
-$ curl -X GET -H 'Content-Type: application/json;' http://localhost:8000/api/planets/1/
+$ curl -X GET -H 'Content-Type: application/json;' https://b2wars.herokuapp.com/api/planets/1/
 ```
 Return
 ```json
@@ -97,12 +97,12 @@ CRUD implementation of planets, available in `/api/planets/` resource.
 ### Planets entity
 
 |Field|Type|Description|Rules|Default|
-|:---:|:--:|:----------|:---:|:-----:|
+|:---|:--:|:----------|:---:|:-----:|
 |`pk`|int|ID of a plant|unique, read only|-|
 |`name`|str|Name of a planet|unique, required|-|
 |`climate`|str|Climate of a planet|optional|`"unknown"`|
 |`terrain`|str|Terrain of a planet|optional|`"unknown"`|
-|`flims_appearances`|int|Number appearances in films|read only|-|
+|`films_appearances`|int|Number appearances in films|read only|-|
 |`films`|list|Films URL where planet appears in Star Wars franchise|read only|-|
 |`url`|str|Link to planet detail|read only|-|
 |`created_at`|datetime|Moment when planet is created|read only|-|
@@ -116,9 +116,159 @@ CRUD implementation of planets, available in `/api/planets/` resource.
 |`/api/planets/`|`GET`|200|List all planets|
 |`/api/planets/:id`|`GET`|200|Get a planet object|
 |`/api/planets/`|`POST`|201|Create a planet|
-|`/api/planets/:id`|`PUT`|200|Update all fields from planet object|
-|`/api/planets/:id`|`PATCH`|200|Update given fields from planet object|
+|`/api/planets/:id`|`PUT`|200|Update all fields on a planet object|
+|`/api/planets/:id`|`PATCH`|200|Update one or more fields on a planet object|
 |`/api/planets/:id`|`DELETE`|204|Delete a planet|
+
+#### List all planets
+
+```shell
+$ curl -X GET -H 'Content-Type: application/json;' https://b2wars.herokuapp.com/api/planets/
+```
+Return
+```json
+HTTP/1.1 200 OK
+
+{
+    "count": 3,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "pk": 1,
+            "url": "https://b2wars.herokuapp.com/api/planets/1/",
+            "name": "Coruscant",
+            "climate": "temperate",
+            "terrain": "cityscape, mountains",
+            "films": [
+                "https://swapi.co/api/films/5/", 
+                "https://swapi.co/api/films/4/", 
+                "https://swapi.co/api/films/6/", 
+                "https://swapi.co/api/films/3/"
+            ],
+            "films_appearances": 4,
+            "created_at": "2019-02-25T16:04:05.763000Z",
+            "updated_at": "2019-02-25T16:04:05.763000Z"
+        }, 
+        {
+            "pk": 2,
+            "url": "https://b2wars.herokuapp.com/api/planets/2/",
+            "name": "Geonosis",
+            "climate": "temperate, arid",
+            "terrain": "rock, desert, mountain, barren",
+            "films": [
+                "https://swapi.co/api/films/5/"
+            ],
+            "films_appearances": 1,
+            "created_at": "2019-02-25T16:04:05.763000Z",
+            "updated_at": "2019-02-25T16:04:05.763000Z"
+        }, 
+        {
+            "pk": 3,
+            "url": "https://b2wars.herokuapp.com/api/planets/3/",
+            "name": "Mygeeto",
+            "climate": "frigid",
+            "terrain": "glaciers, mountains, ice canyons",
+            "films": [
+                "https://swapi.co/api/films/6/"
+            ],
+            "films_appearances": 1,
+            "created_at": "2019-02-25T16:04:05.763000Z",
+            "updated_at": "2019-02-25T16:04:05.763000Z"
+        }
+    ]
+}
+```
+
+#### Create a planet
+
+```shell
+$ curl -X POST \
+       -H 'Content-Type: application/json;' \
+       -d '{ "name": "Jakku", "terrain": "deserts"}' \
+       https://b2wars.herokuapp.com/api/planets/
+```
+Successful return :heavy_check_mark:
+```json
+HTTP/1.1 201 Created
+
+{
+    "pk": 5,
+    "url": "https://b2wars.herokuapp.com/api/planets/5/",
+    "name": "Jakku",
+    "climate": "unknown",
+    "terrain": "deserts",
+    "films": [
+        "https://swapi.co/api/films/7/"
+    ],
+    "films_appearances": 1,
+    "created_at": "2019-02-25T18:17:11.003241Z",
+    "updated_at": "2019-02-25T18:17:11.003279Z"
+}
+```
+Error return (tries to add duplicated name) :x:
+
+```json
+HTTP/1.1 400 Bad request
+
+{
+    "name": [
+        "planet with this Name already exists."
+    ]
+}
+```
+
+#### Update all fields from product
+
+```shel
+$ curl -X PUT \
+       -H 'Content-Type: application/json;' \
+       -d '{ "name": "coruscant", "climate": "hot", "terrain": "mountains"}' \
+       https://b2wars.herokuapp.com/api/planets/1/
+```
+Successful return :heavy_check_mark:
+```json
+HTTP/1.1 200 Ok
+
+{
+    "pk": 1,
+    "url": "https://b2wars.herokuapp.com/api/planets/1/",
+    "name": "coruscant",
+    "climate": "hot",
+    "terrain": "mountains",
+    "films": [
+        "https://swapi.co/api/films/5/", 
+        "https://swapi.co/api/films/4/", 
+        "https://swapi.co/api/films/6/", 
+        "https://swapi.co/api/films/3/"
+    ],
+    "films_appearances": 4,
+    "created_at": "2019-02-25T13:09:20.220000Z",
+    "updated_at": "2019-02-25T18:35:42.484955Z"
+}
+```
+Error return (tries to update without passing fields) :x:
+```json
+HTTP/1.1 400 Bad Request
+{
+    "name":[
+        "This field is required."
+    ]
+}
+```
+
+#### Delete a planet
+```shel
+$ curl -X DELETE \
+       -H 'Content-Type: application/json;' \
+       https://b2wars.herokuapp.com/api/planets/1/
+```
+Successful return :heavy_check_mark:
+```json
+HTTP/1.1 204 No Content
+
+
+```
 
 ### Search in Planets
 
@@ -176,10 +326,13 @@ from b2wars.settings.dev import *
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
         'NAME': 'my-document-name',
         'HOST': 'my-host-name',
         'USER': 'my-user-name',
         'PASSWORD': 'my-password',
+        'AUTH_SOURCE': 'auth-source',
+        'AUTH_MECHANISM': 'SCRAM-SHA-1' # or your authentication mechanism
     }
 }
 ```
@@ -202,7 +355,7 @@ $ python manage.py migrate
 ## Run application
 
 ```shell
-python manage.py runserver
+$ python manage.py runserver
 ```
 
 Go to [http://localhost:8000/api/](http://localhost:8000/api/) to access the API.
@@ -218,7 +371,8 @@ $ docker-compose up --build
 ```
 Output
 ```shell
-db_1   | 2019-02-25T04:39:02.480+0000 I ACCESS   [conn4] Successfully authenticated as principal b2wars on admin
+db_1   | 2019-02-25T04:39:02.480+0000 I ACCESS   [conn4] Successfully authenticated as 
+principal b2wars on admin
 api_1  | February 25, 2019 - 04:39:02
 api_1  | Django version 2.1.7, using settings 'b2wars.settings'
 api_1  | Starting development server at http://0.0.0.0:8000/
