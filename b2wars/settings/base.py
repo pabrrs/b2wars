@@ -52,7 +52,7 @@ MIDDLEWARE = [
 
     # whitenoise Middleware.
     # https://warehouse.python.org/project/whitenoise/
-    
+
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.middleware.security.SecurityMiddleware',

@@ -12,7 +12,8 @@ ignore=.coveragerc,
        README.md,
        migrations,
        LICENSE,
-       coverage.xml
+       coverage.xml,
+       CODE_OF_CONDUCT.md
 
 [MESSAGE CONTROL]
 # C0111: Missing docstring
