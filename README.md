@@ -41,6 +41,7 @@ This project was created as a solution to the challenge for the backend develope
 - [Pipenv 2018.11.26](https://pipenv.readthedocs.io/en/latest/)
 - [Docker 18.09.2-ce](https://docs.docker.com/)
 - [Docker Compose 1.17](https://docs.docker.com/compose/overview/)
+- [Heroku Cloud Services](https://www.heroku.com/home)
 
 
 # How to use
