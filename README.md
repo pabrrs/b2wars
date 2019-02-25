@@ -1,8 +1,8 @@
 <div align="center">
     <img src="docs/rebels.png" width="64" heigh="64">
     <h1>B2Wars</h1>
-    <h3 style="margin-bottom: 5px;">🌌 A Star Wars Planets API 🚀</h3>
-    <a href="https://b2wars.herokuapp.com">https://b2wars.herokuapp.com/api/</a>
+    <h3>🌌 A Star Wars Planets API 🚀</h3>
+    <h3><a href="https://b2wars.herokuapp.com/api/">https://b2wars.herokuapp.com/api/</a></h3>
 
 [![Build Status](https://travis-ci.org/abekroenem/b2wars.svg?branch=master)](https://travis-ci.org/abekroenem/b2wars)
 [![codecov](https://codecov.io/gh/abekroenem/b2wars/branch/master/graph/badge.svg)](https://codecov.io/gh/abekroenem/b2wars)
