@@ -25,7 +25,6 @@ SECRET_KEY = '%*cnwumk3v*9f6wy9c_dc#sb8w=a04wry5@_*-or=5f1l7^t02'
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -35,6 +34,8 @@ INSTALLED_APPS = [
     # Django rest framework
     # https://www.django-rest-framework.org/
     'rest_framework',
+
+    'rest_framework_swagger',
 
     # Django Filter
     # https://django-filter.readthedocs.io/en/master/

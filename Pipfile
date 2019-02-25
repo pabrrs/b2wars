@@ -9,6 +9,7 @@ markdown = "*"
 django-filter = "*"
 djongo = "*"
 requests = "*"
+django-rest-swagger = "*"
 
 [dev-packages]
 pylint = "*"

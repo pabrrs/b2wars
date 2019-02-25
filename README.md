@@ -113,7 +113,7 @@ CRUD implementation of planets, available in `/api/planets/` resource.
 |Path|Method|Status Code|Description|
 |:---|:----:|:---------:|:----------|
 |`/api/planets/`|`OPTIONS`|200|Shows Planets Resource structure, fields and validators|
-|`/api/planets/`|`GET`|200|List all planet|
+|`/api/planets/`|`GET`|200|List all planets|
 |`/api/planets/:id`|`GET`|200|Get a planet object|
 |`/api/planets/`|`POST`|201|Create a planet|
 |`/api/planets/:id`|`PUT`|200|Update all fields from planet object|
