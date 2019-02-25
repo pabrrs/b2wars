@@ -1,4 +1,4 @@
-<div style='text-align: center;'>
+<div align="center">
     <h1>B2Wars</h1>
     <a href="https://b2wars.herokuapp.com">https://b2wars.herokuapp.com/api/</a>
     <h3>🌌 A Star Wars Planets API 🚀</h3>
@@ -226,7 +226,7 @@ api_1  | Quit the server with CONTROL-C.
 
 # Run tests
 
-The tests from **b2wars** uses **b2wars/settings/test.py** settings module and a `:memory:` instance of database.
+The tests from **b2wars** uses `b2wars/settings/test.py` settings module and a `:memory:` instance of SQLite database.
 
 ## Run tests local
 
