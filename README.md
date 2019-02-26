@@ -99,7 +99,7 @@ CRUD implementation of planets, available in `/api/planets/` resource.
 
 |Field|Type|Description|Rules|Default|
 |:---|:--:|:----------|:---:|:-----:|
-|`pk`|int|ID of a planet|unique, read only|-|
+|`pk`|int|ID of a planet|unique,   read only|-|
 |`name`|str|Name of a planet|unique, required|-|
 |`climate`|str|Climate of a planet|optional|`"unknown"`|
 |`terrain`|str|Terrain of a planet|optional|`"unknown"`|
