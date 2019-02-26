@@ -69,7 +69,7 @@ To access a `json` representation of this results, just put [https://b2wars.hero
 You can also make a request via any http client, with `Content-Type: application/json`. See this example with **cURL**:
 
 ```shell
-$ curl -X GET -H 'Content-Type: application/json;' https://b2wars.herokuapp.com/api/planets/1/
+curl -X GET -H 'Content-Type: application/json;' https://b2wars.herokuapp.com/api/planets/1/
 ```
 Return
 ```json
@@ -124,7 +124,7 @@ CRUD implementation of planets, available in `/api/planets/` resource.
 #### List all planets
 
 ```shell
-$ curl -X GET -H 'Content-Type: application/json;' https://b2wars.herokuapp.com/api/planets/
+curl -X GET -H 'Content-Type: application/json;' https://b2wars.herokuapp.com/api/planets/
 ```
 Return
 ```json
@@ -184,10 +184,10 @@ HTTP/1.1 200 OK
 #### Create a planet
 
 ```shell
-$ curl -X POST \
-       -H 'Content-Type: application/json;' \
-       -d '{ "name": "Jakku", "terrain": "deserts"}' \
-       https://b2wars.herokuapp.com/api/planets/
+curl -X POST \
+     -H 'Content-Type: application/json;' \
+     -d '{ "name": "Jakku", "terrain": "deserts"}' \
+     https://b2wars.herokuapp.com/api/planets/
 ```
 Successful return :heavy_check_mark:
 ```json
@@ -222,10 +222,10 @@ HTTP/1.1 400 Bad request
 #### Update all fields from product
 
 ```shel
-$ curl -X PUT \
-       -H 'Content-Type: application/json;' \
-       -d '{ "name": "coruscant", "climate": "hot", "terrain": "mountains"}' \
-       https://b2wars.herokuapp.com/api/planets/1/
+curl -X PUT \
+     -H 'Content-Type: application/json;' \
+     -d '{ "name": "coruscant", "climate": "hot", "terrain": "mountains"}' \
+     https://b2wars.herokuapp.com/api/planets/1/
 ```
 Successful return :heavy_check_mark:
 ```json
@@ -260,9 +260,9 @@ HTTP/1.1 400 Bad Request
 
 #### Delete a planet
 ```shel
-$ curl -X DELETE \
-       -H 'Content-Type: application/json;' \
-       https://b2wars.herokuapp.com/api/planets/1/
+curl -X DELETE \
+     -H 'Content-Type: application/json;' \
+     https://b2wars.herokuapp.com/api/planets/1/
 ```
 Successful return :heavy_check_mark:
 ```json
@@ -375,7 +375,7 @@ To run **B2Wars** with Docker, make sure you have **Docker** and **Docker Compos
 Then, just run:
 
 ```shell
-$ docker-compose up --build
+docker-compose up --build
 ```
 Output
 ```shell
@@ -394,13 +394,13 @@ The tests from **b2wars** uses `b2wars/settings/test.py` settings module and a `
 ## Run tests local
 
 ```shell
-$ python runtests.py
+python runtests.py
 ```
 
 ## Run tests with docker
 
 ```shell
-$ docker-compose exec api python runtests.py
+docker-compose exec api python runtests.py
 ```
 
 
@@ -409,13 +409,13 @@ $ docker-compose exec api python runtests.py
 ## Run coverage local
 
 ```shell
-$ python runcov.py
+python runcov.py
 ```
 
 ## Run coverage with docker
 
 ```shell
-$ docker-compose exec api python runcov.py
+docker-compose exec api python runcov.py
 ```
 
 To access a **html** representation of coverage results, open the file `htmlcov/index.html` on your browser.
@@ -428,13 +428,13 @@ To access a **html** representation of coverage results, open the file `htmlcov/
 ## Run linter local
 
 ```shell
-$ pylint *
+pylint *
 ```
 
 ## Run coverage with docker
 
 ```shell
-$ docker-compose exec api pylint *
+docker-compose exec api pylint *
 ```
 
 Output
