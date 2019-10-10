@@ -4,8 +4,8 @@
     <h3>🌌 A Star Wars Planets API 🚀</h3>
     <h3><a href="https://b2wars.herokuapp.com/api/">https://b2wars.herokuapp.com/api/</a></h3>
 
-[![Build Status](https://travis-ci.org/abekroenem/b2wars.svg?branch=master)](https://travis-ci.org/abekroenem/b2wars)
-[![codecov](https://codecov.io/gh/abekroenem/b2wars/branch/master/graph/badge.svg)](https://codecov.io/gh/abekroenem/b2wars)
+[![Build Status](https://travis-ci.org/pabarros/b2wars.svg?branch=master)](https://travis-ci.org/abekroenem/b2wars)
+[![codecov](https://codecov.io/gh/pabarros/b2wars/branch/master/graph/badge.svg)](https://codecov.io/gh/abekroenem/b2wars)
 
 </div>
 <hr>
