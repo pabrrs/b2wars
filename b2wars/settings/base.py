@@ -153,5 +153,5 @@ REST_FRAMEWORK = {
 # SWAPI resources
 # https://swapi.dev/
 
-SWAPI_URL = 'https://swapi.dev/api'
+SWAPI_URL = 'http://swapi.dev/api'
 SWAPI_PLANETS_URL = "%s/planets/" % SWAPI_URL

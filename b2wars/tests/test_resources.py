@@ -1,3 +1,5 @@
+from django.conf import settings
+
 from rest_framework import status
 from rest_framework.test import APIRequestFactory, APITestCase
 
@@ -10,10 +12,8 @@ class PlanetsResourceTestCase(APITestCase):
     path = '/api/planets/'
     factory = APIRequestFactory()
 
-
     def object_url(self, object_id):
         return "%s%i" % (self.path, object_id)
-
 
     @classmethod
     def setUpClass(cls):
@@ -34,6 +34,10 @@ class PlanetsResourceTestCase(APITestCase):
                 terrain='deserts'
             ),
         ])
+
+    @classmethod
+    def tearDownClass(cls):
+        Planet.objects.all().delete()
 
     def test_planet_resource_is_avaliable(self):
         """ Check if planets resource is available """
@@ -56,7 +60,6 @@ class PlanetsResourceTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['results'], serializer.data)
 
-
     def test_planet_retrieve(self):
         """ GET planet object """
 
@@ -70,7 +73,6 @@ class PlanetsResourceTestCase(APITestCase):
         response = planet_retrieve(request, pk=planet.pk)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
-
 
     def test_create_planet(self):
         """ POST planets """
@@ -86,7 +88,6 @@ class PlanetsResourceTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(Planet.objects.filter(name="Polis Massa").exists())
 
-
     def test_update_planet(self):
         """ PUT planet """
 
@@ -96,9 +97,9 @@ class PlanetsResourceTestCase(APITestCase):
             terrain="x"
         )
         new_data = {
-            "name":"Rodia",
-            "climate":"hot",
-            "terrain":"jungles, oceans, urban, swamps"
+            "name": "Rodia",
+            "climate": "hot",
+            "terrain": "jungles, oceans, urban, swamps"
         }
         request = self.factory.put(self.object_url(planet.pk), data=new_data)
         planet_update = PlanetViewSet.as_view({'put': 'update'})
@@ -106,20 +107,20 @@ class PlanetsResourceTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(Planet.objects.filter(name="Rodia").exists())
 
-
     def test_partial_update_planet(self):
         """ PATCH planet """
 
         planet = Planet.objects.last()
         new_data = {
-            "terrain":"a nice great terrain"
+            "terrain": "a nice great terrain"
         }
         request = self.factory.patch(self.object_url(planet.pk), data=new_data)
-        planet_partial_update = PlanetViewSet.as_view({'patch': 'partial_update'})
+        planet_partial_update = PlanetViewSet.as_view(
+            {'patch': 'partial_update'})
         response = planet_partial_update(request, pk=planet.pk)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertTrue(Planet.objects.filter(terrain=new_data['terrain']).exists())
-
+        self.assertTrue(Planet.objects.filter(
+            terrain=new_data['terrain']).exists())
 
     def test_delete_planet(self):
         """ DELETE planet """
@@ -131,12 +132,12 @@ class PlanetsResourceTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(Planet.objects.filter(pk=planet.pk).exists())
 
-
     def test_search_planet_by_name(self):
         """ Get planet by name """
 
         planet = Planet.objects.first()
-        request = self.factory.get("%s?name=%s" % (self.path, planet.name.lower()))
+        request = self.factory.get("%s?name=%s" %
+                                   (self.path, planet.name.lower()))
         serializer = PlanetSerializer(
             planet,
             context={'request': request}
@@ -145,13 +146,13 @@ class PlanetsResourceTestCase(APITestCase):
         response = planet_list(request)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(next(iter(response.data['results'])), serializer.data)
-
 
     def test_search_planet_by_name_exact(self):
         """ Get planet by name with exact lookup"""
 
         planet = Planet.objects.get(name__iexact='Tatooine')
-        request = self.factory.get("%s?name__exact=%s" % (self.path, planet.name))
+        request = self.factory.get("%s?name__exact=%s" %
+                                   (self.path, planet.name))
         serializer = PlanetSerializer(
             planet,
             context={'request': request}
@@ -161,12 +162,12 @@ class PlanetsResourceTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(next(iter(response.data['results'])), serializer.data)
 
-
     def test_search_planet_by_climate(self):
         """ Get planet by climate """
 
         planet = Planet.objects.get(climate='arid')
-        request = self.factory.get("%s?climate=%s" % (self.path, planet.climate))
+        request = self.factory.get("%s?climate=%s" %
+                                   (self.path, planet.climate))
         serializer = PlanetSerializer(
             planet,
             context={'request': request}
@@ -175,13 +176,13 @@ class PlanetsResourceTestCase(APITestCase):
         response = planet_list(request)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn(serializer.data, response.data['results'])
-
 
     def test_search_planet_by_terrain(self):
         """ Get planet by terrain """
 
         planet = Planet.objects.get(terrain='deserts')
-        request = self.factory.get("%s?terrain=%s" % (self.path, planet.terrain))
+        request = self.factory.get("%s?terrain=%s" %
+                                   (self.path, planet.terrain))
         serializer = PlanetSerializer(
             planet,
             context={'request': request}
@@ -190,7 +191,6 @@ class PlanetsResourceTestCase(APITestCase):
         response = planet_list(request)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn(serializer.data, response.data['results'])
-
 
     def test_planet_have_films_field(self):
         """ Check if films list is present in planet object """
@@ -202,13 +202,16 @@ class PlanetsResourceTestCase(APITestCase):
         self.assertTrue('films' in response.data.keys())
         self.assertIsInstance(response.data['films'], list)
 
-
     def test_planet_films_appearances_calc(self):
         """ Check field films_appearances is properly calculated """
 
-        planet = Planet.objects.get(name="Jakku")
+        planet = Planet.objects.get(name="Tatooine")
         planet_films = [
-            "https://swapi.co/api/films/7/"
+            f"{settings.SWAPI_URL}/films/1/",
+            f"{settings.SWAPI_URL}/films/3/",
+            f"{settings.SWAPI_URL}/films/4/",
+            f"{settings.SWAPI_URL}/films/5/",
+            f"{settings.SWAPI_URL}/films/6/"
         ]
         request = self.factory.get(self.object_url(planet.pk))
         planet_retrieve = PlanetViewSet.as_view({'get': 'retrieve'})
@@ -216,9 +219,3 @@ class PlanetsResourceTestCase(APITestCase):
         self.assertTrue('films_appearances' in response.data.keys())
         self.assertIsInstance(response.data['films_appearances'], int)
         self.assertEqual(response.data['films_appearances'], len(planet_films))
-
-
-
-    @classmethod
-    def tearDownClass(cls):
-        Planet.objects.all().delete()
